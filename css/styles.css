@@ -1,0 +1,208 @@
+/* ============================================================
+   しごたの LP — Design System
+   Warm · Trustworthy · Premium
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap');
+
+/* ============================================================
+   TONE PALETTES
+   default = Clay. Others applied via [data-palette="..."] on <html>
+   ============================================================ */
+:root {
+  /* Clay — ivory + terracotta + amber */
+  --bg:        #FAF4EC;
+  --bg-alt:    #F3E7D7;
+  --surface:   #FFFFFF;
+  --surface-2: #FBF5EC;
+  --ink:       #2C2420;
+  --ink-soft:  #6E5F54;
+  --ink-faint: #A2938857;
+  --line:      #E6D8C6;
+  --primary:   #C2553A;
+  --primary-d: #A23E29;
+  --accent:    #D99748;
+  --accent-d:  #C07E2E;
+  --hero-grad-1: #F7E4CE;
+  --hero-grad-2: #FAF4EC;
+  --on-primary: #FFF7EF;
+  --shadow:    36px 36px 80px -40px rgba(70,40,20,.30);
+  --shadow-sm: 0 18px 40px -28px rgba(70,40,20,.45);
+}
+
+[data-palette="sunset"] {
+  --bg:        #FFF3EC;
+  --bg-alt:    #FCE4DA;
+  --surface:   #FFFFFF;
+  --surface-2: #FFF6F0;
+  --ink:       #3A211B;
+  --ink-soft:  #80584D;
+  --ink-faint: #C7948557;
+  --line:      #F4D8CB;
+  --primary:   #E2613F;
+  --primary-d: #C7472A;
+  --accent:    #E98B57;
+  --accent-d:  #D86F3B;
+  --hero-grad-1: #FFD9C2;
+  --hero-grad-2: #FFF3EC;
+  --on-primary: #FFF6F0;
+  --shadow:    36px 36px 80px -40px rgba(120,50,30,.28);
+  --shadow-sm: 0 18px 40px -28px rgba(120,50,30,.40);
+}
+
+[data-palette="espresso"] {
+  --bg:        #211814;
+  --bg-alt:    #2C201A;
+  --surface:   #2E221C;
+  --surface-2: #38291F;
+  --ink:       #F3E7D9;
+  --ink-soft:  #C5AE9D;
+  --ink-faint: #8a6f5d57;
+  --line:      #4A3527;
+  --primary:   #E27A4B;
+  --primary-d: #CB6437;
+  --accent:    #E2A65A;
+  --accent-d:  #CE9243;
+  --hero-grad-1: #3A281E;
+  --hero-grad-2: #211814;
+  --on-primary: #2B1B12;
+  --shadow:    36px 36px 90px -40px rgba(0,0,0,.55);
+  --shadow-sm: 0 18px 44px -26px rgba(0,0,0,.6);
+}
+
+[data-palette="terra"] {
+  --bg:        #F4EDE1;
+  --bg-alt:    #E8DCC7;
+  --surface:   #FBF6EC;
+  --surface-2: #F0E7D6;
+  --ink:       #322A1E;
+  --ink-soft:  #6B5E48;
+  --ink-faint: #9b8a6d57;
+  --line:      #DBCBAF;
+  --primary:   #B0492E;
+  --primary-d: #8F3722;
+  --accent:    #C09148;
+  --accent-d:  #A87932;
+  --hero-grad-1: #E6D6BB;
+  --hero-grad-2: #F4EDE1;
+  --on-primary: #FBF6EC;
+  --shadow:    36px 36px 80px -40px rgba(60,45,20,.30);
+  --shadow-sm: 0 18px 40px -28px rgba(60,45,20,.42);
+}
+
+/* ---------- Type families (tweakable) ---------- */
+:root {
+  --font-display: 'Shippori Mincho B1', 'Zen Old Mincho', serif;
+  --font-body: 'Zen Kaku Gothic New', system-ui, sans-serif;
+  --font-en: 'Cormorant Garamond', serif;
+}
+[data-headfont="gothic"] {
+  --font-display: 'Zen Kaku Gothic New', system-ui, sans-serif;
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  font-weight: 400;
+  letter-spacing: .01em;
+  overflow-x: hidden;
+  transition: background .5s ease, color .5s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+::selection { background: var(--primary); color: var(--on-primary); }
+
+/* ---------- Layout helpers ---------- */
+.wrap { width: min(1180px, 90vw); margin-inline: auto; }
+.wrap-narrow { width: min(820px, 90vw); margin-inline: auto; }
+
+.section { position: relative; padding: clamp(72px, 11vw, 150px) 0; }
+
+/* English eyebrow */
+.eyebrow {
+  font-family: var(--font-en);
+  font-size: clamp(.95rem, 1.4vw, 1.15rem);
+  letter-spacing: .42em;
+  text-transform: uppercase;
+  color: var(--primary);
+  font-weight: 600;
+  font-style: italic;
+  display: inline-flex;
+  align-items: center;
+  gap: .8em;
+}
+.eyebrow::before {
+  content: "";
+  width: 34px; height: 1.5px;
+  background: var(--primary);
+  display: inline-block;
+  font-style: normal;
+}
+
+/* Section heading */
+.s-head { font-family: var(--font-display); font-weight: 700; color: var(--ink); word-break: keep-all;
+  font-size: clamp(1.85rem, 4.2vw, 3rem); line-height: 1.32; letter-spacing: .02em; }
+.s-head .accent { color: var(--primary); }
+
+.lead { color: var(--ink-soft); font-size: clamp(1rem, 1.5vw, 1.12rem); line-height: 2; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: .7em;
+  font-family: var(--font-body); font-weight: 700;
+  font-size: 1rem; letter-spacing: .04em;
+  padding: 1.05em 2.1em; border-radius: 999px;
+  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s, background .3s;
+  white-space: nowrap;
+}
+.btn .arrow { transition: transform .35s cubic-bezier(.2,.8,.2,1); }
+.btn:hover .arrow { transform: translateX(5px); }
+
+.btn-primary { background: var(--primary); color: var(--on-primary); box-shadow: var(--shadow-sm); }
+.btn-primary:hover { background: var(--primary-d); transform: translateY(-3px); }
+
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.btn-ghost:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); }
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal { opacity: 0; transform: translateY(34px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal.d1 { transition-delay: .08s; }
+.reveal.d2 { transition-delay: .16s; }
+.reveal.d3 { transition-delay: .24s; }
+.reveal.d4 { transition-delay: .32s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Placeholder visual ---------- */
+.ph {
+  position: relative; overflow: hidden;
+  background-color: var(--surface-2);
+  background-image: repeating-linear-gradient(135deg, transparent 0 14px, var(--line) 14px 15px);
+  border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--ink-soft);
+}
+.ph span {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--bg); padding: .45em .9em; border-radius: 4px;
+  border: 1px solid var(--line); color: var(--ink-soft);
+}
